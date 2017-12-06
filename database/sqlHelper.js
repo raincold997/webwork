@@ -9,7 +9,7 @@ sqlite3.verbose();
 var db = undefined;
 
 exports.connect = function (callback) {
-    db = new sqlite3.Database("database/phoneWall.sqlite3", sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE,
+    db = new sqlite3.Database("database/photoWall.sqlite3", sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE,
         function (err) {
             if (err) {
                 util.log('FAIL on creating database ' + err);
@@ -18,12 +18,12 @@ exports.connect = function (callback) {
                 callback(null);
             }
         });
-}
+};
 //此处的disconnect函数是空的
 exports.disconnect = function (callback) {
     db.close();
     callback(null);
-}
+};
 exports.setup = function (tableName, colNames, colTypes, callback) {
     let command = " (";
     for (let i = 0; i < colNames.length; i++) {
@@ -49,7 +49,7 @@ exports.setup = function (tableName, colNames, colTypes, callback) {
                 callback(null);
             }
         });
-}
+};
 exports.emptyNote = {"ts": "", author: "", note: ""};
 //tableName为表名，colName为表格的列名数组，value为对应各列的数值数组
 exports.add = function (tableName, colNames, values, callback) {
@@ -76,7 +76,7 @@ exports.add = function (tableName, colNames, values, callback) {
                 callback(null);
             }
         });
-}
+};
 /*
 run函数接受一个字符串参数，其中?表示占位符，占位符的值必须通过一个数组传递进来
 调用者提供了一个回调函数，然后通过这个回调函数来声明错误
@@ -116,11 +116,11 @@ exports.edit = function (tableName, colNames, values, callback) {
                 callback(null);
             }
         });
-}
+};
 exports.allNotes = function (tableName, callback) {
     util.log(' in allnote');
     db.all("SELECT * FROM " + tableName, callback);
-}
+};
 exports.forAll = function (tableName, doEach, done) {
     db.each("SELECT * FROM " + tableName, function (err, row) {
         if (err) {
@@ -130,7 +130,7 @@ exports.forAll = function (tableName, doEach, done) {
             doEach(null, row);
         }
     }, done);
-}
+};
 /*
 allNotes和forAll函数是操作所有数据的两种方法，allNotes把数据库中所有的数据行收集到一个数组里，
 而forAll方法可以接受两个回调函数，每当从数据集中拿一行数据，回调函数doEach都会执行一遍，当读完所有数据时，回调函数done就会执行
@@ -150,4 +150,4 @@ exports.findNoteById = function (tableName, keyName, keyValue, success, fail) {
                 }
             }
         }, fail);
-}
+};

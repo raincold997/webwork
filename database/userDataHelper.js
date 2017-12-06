@@ -1,6 +1,6 @@
 //user数据库接口库
 var util = require('util');
-var sqlHelper = require('sqlHelper');
+var sqlHelper = require('./sqlHelper');
 var async = require('async');
 var tableName = "users";
 var colNames = ["userName", "password"];
@@ -44,7 +44,6 @@ exports.addAUser = function (values, callback) {
     // },function (err,result) {
     //     if(err) throw err;
     // })
-
     async.series([function (cb) {
         //顺序执行的代码一
         sqlHelper.findNoteById(tableName, keyName, values[0],

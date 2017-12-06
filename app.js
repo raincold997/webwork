@@ -61,16 +61,19 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(function (req,res,next) {
-    var url = req.originalUrl;
-    if(url !== "/users/login" && !req.session.user){
-        return res.redirect("/user/login");
-    }
-    next();
-})
+// app.use(function (req,res,next) {
+//     var url = req.originalUrl;
+//     if(url !== "/users/login" && !req.session.user){
+//         return res.redirect("/user/login");
+//     }
+//     next();
+// })
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/registe',index);
+app.use('/login',index);
+app.use('/home',index);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

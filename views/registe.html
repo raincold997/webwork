@@ -6,13 +6,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title><%= title %></title>
-    <link rel="stylesheet" href="../public/stylesheets/bootstrap.min.css" media="screen">
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css" media="screen">
     <style type="text/css">
         .m15{ margin: 15px;}
         .tc{ text-align: center;font-size: 18px;font-weight: 600;}
     </style>
 </head>
 <!--<body screen_capture_injected="true">-->
+<body>
 <div class="container">
     <%- message %>
     <form class="col-sm-offset-4 col-sm-4 form-horizontal" role="form" method="post" onsubmit="return false">
@@ -59,24 +60,24 @@
     </form>
 </div>
 
-<script type="text/javascript" src="../public/javascripts/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="../public/javascripts/bootstrap.min.js"></script>
+<script type="text/javascript" src="/javascripts/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/javascripts/bootstrap.min.js"></script>
 <script type="text/javascript">
     $(function(){
-        document.getElementById("login1").click(function(){
+        $("#login1").click(function(){
             location.href = 'login';
         });
-        document.getElementById("register1").click(function(){
-            var username = document.getElementById("username").val();
-            var password = document.getElementById("password").val();
-            var password1 = document.getElementById("#password1").val();
+        $("#register1").click(function(){
+            var username = $("#username").val();
+            var password = $("#password").val();
+            var password1 = $("#password1").val();
             if(password !== password1){
-                document.getElementById("password").css("border","1px solid red");
-                document.getElementById("#password1").css("border","1px solid red");
+                $("#password").css("border","1px solid red");
+                $("#password1").css("border","1px solid red");
             }else if(password === password1){
                 var data = {"uname":username,"upwd":password};
                 $.ajax({
-                    url: '/register',
+                    url: '/registe',
                     type: 'post',
                     data: data,
                     success: function(data,status){
@@ -85,7 +86,7 @@
                         }
                     },
                     error: function(data,err){
-                        location.href = 'register';
+                        location.href = 'registe';
                     }
                 });
             }
