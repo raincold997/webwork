@@ -14,6 +14,7 @@ var async = require('async')
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var photo = require('./routes/photos');
 
 var app = express();
 
@@ -74,6 +75,7 @@ app.use('/users', users);
 app.use('/registe',index);
 app.use('/login',index);
 app.use('/home',index);
+app.use('/photo',photo);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

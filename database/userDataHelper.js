@@ -107,20 +107,10 @@ exports.loginAUser = function (values, callback) {
                 cb(null);
             });
     }, function (cb) {
-        //0代表error,1代表成功登录,2代表用户不存在无法登录,3代表用户密码错误
+        //1成功登录,2用户不存在,3密码错误
         if (user === null) {
-            sqlHelper.add("users", colNames, values,
-                function (error) {
-                    if (error) {
-                        util.log('Fail on add a user:' + values[0] + 'because of error:' + error);
-                        callback(error, 0, user);
-                    }
-                    else {
-                        callback(null, 2, user);
-                        // console.log("exist");
-                    }
-                    cb(error);
-                });
+            callback(null,2,user);
+            cb();
         }
         else {
             // console.log("user exist" + user.password + "values[1]" + values[1]);
@@ -133,7 +123,6 @@ exports.loginAUser = function (values, callback) {
             cb();
         }
     }], function (error, values) {
-        // console.log("zzz")
         if (error) throw error;
     });
 

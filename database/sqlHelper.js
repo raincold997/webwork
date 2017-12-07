@@ -124,9 +124,10 @@ exports.allNotes = function (tableName, callback) {
 exports.forAll = function (tableName, doEach, done) {
     db.each("SELECT * FROM " + tableName, function (err, row) {
         if (err) {
-            util.log('FAIL to retrieve row ' + err);
+            console.log('FAIL to retrieve row ' + err);
             done(err, null);
         } else {
+            console.log("in forall");
             doEach(null, row);
         }
     }, done);

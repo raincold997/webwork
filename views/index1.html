@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <head>
-	<title>Flip Turn Template </title>
+	<title><%= title %> </title>
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
 	<meta charset="UTF-8">
@@ -15,288 +15,142 @@
 <body>
 	<div class="main-container">
 		<nav class="main-nav">
-			<div id="logo" class="left"><a href="#">Flip Turn</a></div>
+			<div id="logo" class="left"><a href="#">Photo Wall</a></div>
 			<ul class="nav right center-text">
 				<li class="btn active">Home</li>
 				<!--<li class="btn"><a href="about.html">About</a></li>-->
 				<!--<li class="btn"><a href="awards.html">Awards</a></li>				-->
 				<!--<li class="btn"><a href="contact.html">Contact</a></li>-->
-				<li class="btn"><a rel="nofollow" href="#">Add Photo</a></li>
+				<li class="btn"><a rel="nofollow" href="#">logout</a></li>
 			</ul>
+
 		</nav>
-        <div class="copyrights">Collect from <a href="http://www.cssmoban.com/"  title="网站模板">网站模板</a></div>
+        <!--<div class="copyrights">Collect from <a href="http://www.cssmoban.com/"  title="网站模板">网站模板</a></div>-->
 		<div class="content-container">
 			<header>
 			<h1 class="center-text">Image Gallery</h1>
-		</header>
+			</header>
+			<div class="row">
+				<form role="form" id="myForm" action="http://v0.api.upyun.com/xxx" method="post" enctype="multipart/form-data">
+
+					<input type="hidden" name="policy" value="">
+					<input type="hidden" name="signature" value="">
+
+					<div class="form-group">
+						<label for="url" class="col-sm-2 control-label">上传:</label>
+						<div class="col-sm-7">
+							<input type="file" name="fulAvatar" id="file_upload" value=""
+								   class="form-control" placeholder="图片地址" onchange="uploadByForm();">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
 		<div id="portfolio-content" class="center-text">
 			<div class="portfolio-page" id="page-1">
+				<% userPhotoPaths.forEach(function (userPhotoPath) { %>
+				<!--<a href="<%= userPhotoPath %>" download=""><img class="photo_display" src="<%= userPhotoPath %>"/></a>-->
 				<div class="portfolio-group">
-					<a class="portfolio-item" href="/images/1-large.jpg">
-						<img src="/images/1-small.jpg" alt="image 1">
+					<a class="portfolio-item" href="<%= userPhotoPath %>">
+						<img src="/images/1-small.jpg" alt="<%= userPhotoPath%>">
 						<div class="detail">
-							<h3>Wavy Road</h3>
-							<span class="btn">View</span>
+							<h3>hand</h3>
+							<span class="btn">view</span>
 							<span class="btn">delete</span>
 						</div>
-					</a>				
+					</a>
 				</div>
-				<div class="portfolio-group">
-					<a class="portfolio-item" href="/images/2-large.jpg">
-						<img src="/images/2-small.jpg" alt="image 2">
-						<div class="detail">
-							<h3>Rocky Mountain</h3>
-							<p>Sed in molestie lectus. Curabitur non est neque. Maecenas id luctus ligula. Duis ac laoreet mi. Maecenas non lorem sed elit molestie tincidunt.</p>
-							<span class="btn">View</span>
-						</div>
-					</a>				
-				</div>
-				<div class="portfolio-group">
-					<a class="portfolio-item" href="/images/3-large.jpg">
-						<img src="/images/3-small.jpg" alt="image 3">
-						<div class="detail">
-							<h3>Clear River</h3>
-							<p>Duis ac laoreet mi. Maecenas non lorem sed elit molestie tincidunt. Vestibulum tincidunt libero urna, ut dignissim purus accumsan nec.</p>
-							<span class="btn">View</span>
-						</div>
-					</a>				
-				</div>
-				<div class="portfolio-group">
-					<a class="portfolio-item" href="/images/4-large.jpg">
-						<img src="/images/4-small.jpg" alt="image 4">
-						<div class="detail">
-							<h3>Rounded Flower</h3>
-							<p>Sed in molestie lectus. Curabitur non est neque. Maecenas id luctus ligula. Mauris dignissim ante eu arcu ultricies, at sodales orci aliquet.</p>
-							<span class="btn">View</span>
-						</div>
-					</a>				
-				</div>
-				<div class="portfolio-group">
-					<a class="portfolio-item" href="/images/5-large.jpg">
-						<img src="/images/5-small.jpg" alt="image 5">
-						<div class="detail">
-							<h3>Bustling City</h3>
-							<p>Duis ac laoreet mi. Vestibulum tincidunt libero urna, ut dignissim purus accumsan nec. Sed in molestie lectus. Curabitur non est neque.</p>
-							<span class="btn">View</span>
-						</div>
-					</a>				
-				</div>
-				<div class="portfolio-group">
-					<a class="portfolio-item" href="/images/6-large.jpg">
-						<img src="/images/6-small.jpg" alt="image 6">
-						<div class="detail">
-							<h3>Retired Leaves</h3>
-							<p>Sed in molestie lectus. Curabitur non est neque. Maecenas id luctus ligula. Mauris dignissim ante eu arcu ultricies, at sodales orci aliquet.</p>
-							<span class="btn">View</span>
-						</div>
-					</a>				
-				</div>
-				<div class="portfolio-group">
-					<a class="portfolio-item" href="/images/7-large.jpg">
-						<img src="/images/7-small.jpg" alt="image 7">
-						<div class="detail">
-							<h3>Clean Design</h3>
-							<p>Vestibulum tincidunt libero urna, ut dignissim purus accumsan nec. Maecenas id luctus ligula. Mauris dignissim ante eu arcu ultricies, at sodales orci aliquet.</p>
-							<span class="btn">View</span>
-						</div>
-					</a>				
-				</div>
-				<div class="portfolio-group">
-					<a class="portfolio-item" href="/images/8-large.jpg">
-						<img src="/images/8-small.jpg" alt="image 8">
-						<div class="detail">
-							<h3>Rock Solid</h3>
-							<p>Duis ac laoreet mi. Maecenas non lorem sed elit molestie tincidunt. Mauris dignissim ante eu arcu ultricies, at sodales orci aliquet.</p>
-							<span class="btn">View</span>
-						</div>
-					</a>				
-				</div>
+				<% }) %>
+				<!--<div class="portfolio-group">-->
+					<!--<a class="portfolio-item" href="/images/1-large.jpg">-->
+						<!--<img src="/images/1-small.jpg" alt="image 1">-->
+						<!--<div class="detail">-->
+							<!--<h3>Wavy Road</h3>-->
+							<!--<span class="btn">View</span>-->
+							<!--<span class="btn">delete</span>-->
+						<!--</div>-->
+					<!--</a>				-->
+				<!--</div>-->
+				<!--<div class="portfolio-group">-->
+					<!--<a class="portfolio-item" href="/images/2-large.jpg">-->
+						<!--<img src="/images/2-small.jpg" alt="image 2">-->
+						<!--<div class="detail">-->
+							<!--<h3>Rocky Mountain</h3>-->
+							<!--<p>Sed in molestie lectus. Curabitur non est neque. Maecenas id luctus ligula. Duis ac laoreet mi. Maecenas non lorem sed elit molestie tincidunt.</p>-->
+							<!--<span class="btn">View</span>-->
+						<!--</div>-->
+					<!--</a>				-->
+				<!--</div>-->
+				<!--<div class="portfolio-group">-->
+					<!--<a class="portfolio-item" href="/images/3-large.jpg">-->
+						<!--<img src="/images/3-small.jpg" alt="image 3">-->
+						<!--<div class="detail">-->
+							<!--<h3>Clear River</h3>-->
+							<!--<p>Duis ac laoreet mi. Maecenas non lorem sed elit molestie tincidunt. Vestibulum tincidunt libero urna, ut dignissim purus accumsan nec.</p>-->
+							<!--<span class="btn">View</span>-->
+						<!--</div>-->
+					<!--</a>				-->
+				<!--</div>-->
+				<!--<div class="portfolio-group">-->
+					<!--<a class="portfolio-item" href="/images/4-large.jpg">-->
+						<!--<img src="/images/4-small.jpg" alt="image 4">-->
+						<!--<div class="detail">-->
+							<!--<h3>Rounded Flower</h3>-->
+							<!--<p>Sed in molestie lectus. Curabitur non est neque. Maecenas id luctus ligula. Mauris dignissim ante eu arcu ultricies, at sodales orci aliquet.</p>-->
+							<!--<span class="btn">View</span>-->
+						<!--</div>-->
+					<!--</a>				-->
+				<!--</div>-->
+				<!--<div class="portfolio-group">-->
+					<!--<a class="portfolio-item" href="/images/5-large.jpg">-->
+						<!--<img src="/images/5-small.jpg" alt="image 5">-->
+						<!--<div class="detail">-->
+							<!--<h3>Bustling City</h3>-->
+							<!--<p>Duis ac laoreet mi. Vestibulum tincidunt libero urna, ut dignissim purus accumsan nec. Sed in molestie lectus. Curabitur non est neque.</p>-->
+							<!--<span class="btn">View</span>-->
+						<!--</div>-->
+					<!--</a>				-->
+				<!--</div>-->
+				<!--<div class="portfolio-group">-->
+					<!--<a class="portfolio-item" href="/images/6-large.jpg">-->
+						<!--<img src="/images/6-small.jpg" alt="image 6">-->
+						<!--<div class="detail">-->
+							<!--<h3>Retired Leaves</h3>-->
+							<!--<p>Sed in molestie lectus. Curabitur non est neque. Maecenas id luctus ligula. Mauris dignissim ante eu arcu ultricies, at sodales orci aliquet.</p>-->
+							<!--<span class="btn">View</span>-->
+						<!--</div>-->
+					<!--</a>				-->
+				<!--</div>-->
+				<!--<div class="portfolio-group">-->
+					<!--<a class="portfolio-item" href="/images/7-large.jpg">-->
+						<!--<img src="/images/7-small.jpg" alt="image 7">-->
+						<!--<div class="detail">-->
+							<!--<h3>Clean Design</h3>-->
+							<!--<p>Vestibulum tincidunt libero urna, ut dignissim purus accumsan nec. Maecenas id luctus ligula. Mauris dignissim ante eu arcu ultricies, at sodales orci aliquet.</p>-->
+							<!--<span class="btn">View</span>-->
+						<!--</div>-->
+					<!--</a>				-->
+				<!--</div>-->
+				<!--<div class="portfolio-group">-->
+					<!--<a class="portfolio-item" href="/images/8-large.jpg">-->
+						<!--<img src="/images/8-small.jpg" alt="image 8">-->
+						<!--<div class="detail">-->
+							<!--<h3>Rock Solid</h3>-->
+							<!--<p>Duis ac laoreet mi. Maecenas non lorem sed elit molestie tincidunt. Mauris dignissim ante eu arcu ultricies, at sodales orci aliquet.</p>-->
+							<!--<span class="btn">View</span>-->
+						<!--</div>-->
+					<!--</a>				-->
+				<!--</div>-->
 			</div>
-			<div class="portfolio-page" id="page-2" style="display:none;">
-				<div class="portfolio-group">
-					<a class="portfolio-item" href="/images/8-large.jpg">
-						<img src="/images/8-small.jpg" alt="image 8">
-						<div class="detail">
-							<h3>Wavy Road</h3>
-							<p>Duis ac laoreet mi. Maecenas non lorem sed elit molestie tincidunt. Sed in molestie lectus. Curabitur non est neque.</p>
-							<span class="btn">View</span>
-						</div>
-					</a>				
-				</div>
-				<div class="portfolio-group">
-					<a class="portfolio-item" href="/images/7-large.jpg">
-						<img src="/images/7-small.jpg" alt="image 7">
-						<div class="detail">
-							<h3>Rocky Mountain</h3>
-							<p>Sed in molestie lectus. Curabitur non est neque. Maecenas id luctus ligula. Mauris dignissim ante eu arcu ultricies, at sodales orci aliquet. Duis ac laoreet mi.</p>
-							<span class="btn">View</span>
-						</div>
-					</a>				
-				</div>
-				<div class="portfolio-group">
-					<a class="portfolio-item" href="/images/6-large.jpg">
-						<img src="/images/6-small.jpg" alt="image 6">
-						<div class="detail">
-							<h3>Clear River</h3>
-							<p>Duis ac laoreet mi. Maecenas non lorem sed elit molestie tincidunt. Vestibulum tincidunt libero urna, ut dignissim purus accumsan nec. Sed in molestie lectus.</p>
-							<span class="btn">View</span>
-						</div>
-					</a>				
-				</div>
-				<div class="portfolio-group">
-					<a class="portfolio-item" href="/images/5-large.jpg">
-						<img src="/images/5-small.jpg" alt="image 5">
-						<div class="detail">
-							<h3>Rounded Flower</h3>
-							<p>Sed in molestie lectus. Curabitur non est neque. Maecenas id luctus ligula. Mauris dignissim ante eu arcu ultricies, at sodales orci aliquet.</p>
-							<span class="btn">View</span>
-						</div>
-					</a>				
-				</div>
-				<div class="portfolio-group">
-					<a class="portfolio-item" href="/images/4-large.jpg">
-						<img src="/images/4-small.jpg" alt="image 4">
-						<div class="detail">
-							<h3>Bustling City</h3>
-							<p>Duis ac laoreet mi. Maecenas non lorem sed elit molestie tincidunt. Vestibulum tincidunt libero urna, ut dignissim purus accumsan nec.</p>
-							<span class="btn">View</span>
-						</div>
-					</a>				
-				</div>
-                
-				<div class="portfolio-group">
-					<a class="portfolio-item" href="/images/3-large.jpg">
-						<img src="/images/3-small.jpg" alt="image 3">
-						<div class="detail">
-							<h3>Retired Leaves</h3>
-							<p>Sed in molestie lectus. Curabitur non est neque. Maecenas id luctus ligula. Mauris dignissim ante eu arcu ultricies, at sodales orci aliquet.</p>
-							<span class="btn">View</span>
-						</div>
-					</a>				
-				</div>
-				<div class="portfolio-group">
-					<a class="portfolio-item" href="/images/2-large.jpg">
-						<img src="/images/2-small.jpg" alt="image 2">
-						<div class="detail">
-							<h3>Clean Design</h3>
-							<p>Vestibulum tincidunt libero urna, ut dignissim purus accumsan nec. Sed in molestie lectus. Curabitur non est neque. Maecenas id luctus ligula.</p>
-							<span class="btn">View</span>
-						</div>
-					</a>				
-				</div>
-				<div class="portfolio-group">
-					<a class="portfolio-item" href="/images/1-large.jpg">
-						<img src="/images/1-small.jpg" alt="image 1">
-						<div class="detail">
-							<h3>Rock Solid</h3>
-							<p>Duis ac laoreet mi. Maecenas non lorem sed elit molestie tincidunt. Maecenas id luctus ligula. Mauris dignissim ante eu arcu ultricies, at sodales orci aliquet.</p>
-							<span class="btn">View</span>
-						</div>
-					</a>				
-				</div>
-			</div>
-			<div class="portfolio-page" id="page-3" style="display:none;">
-				<div class="portfolio-group">
-					<a class="portfolio-item" href="/images/3-large.jpg">
-						<img src="/images/3-small.jpg" alt="image 3">
-						<div class="detail">
-							<h3>Wavy Road</h3>
-							<p>Duis ac laoreet mi. Maecenas non lorem sed elit molestie tincidunt. Vestibulum tincidunt libero urna, ut dignissim purus accumsan nec. Curabitur non est neque.</p>
-							<span class="btn">View</span>
-						</div>
-					</a>				
-				</div>
-				<div class="portfolio-group">
-					<a class="portfolio-item" href="/images/2-large.jpg">
-						<img src="/images/2-small.jpg" alt="image 2">
-						<div class="detail">
-							<h3>Rocky Mountain</h3>
-							<p>Sed in molestie lectus. Curabitur non est neque. Maecenas id luctus ligula. Mauris dignissim ante eu arcu ultricies, at sodales orci aliquet. Duis ac laoreet mi.</p>
-							<span class="btn">View</span>
-						</div>
-					</a>				
-				</div>
-				<div class="portfolio-group">
-					<a class="portfolio-item" href="/images/4-large.jpg">
-						<img src="/images/4-small.jpg" alt="image 4">
-						<div class="detail">
-							<h3>Clear River</h3>
-							<p>Duis ac laoreet mi. Maecenas non lorem sed elit molestie tincidunt. Vestibulum tincidunt libero urna, ut dignissim purus accumsan nec. Sed in molestie lectus.</p>
-							<span class="btn">View</span>
-						</div>
-					</a>				
-				</div>
-				<div class="portfolio-group">
-					<a class="portfolio-item" href="/images/1-large.jpg">
-						<img src="/images/1-small.jpg" alt="image 1">
-						<div class="detail">
-							<h3>Rounded Flower</h3>
-							<p>Sed in molestie lectus. Curabitur non est neque. Maecenas id luctus ligula. Mauris dignissim ante eu arcu ultricies, at sodales orci aliquet. </p>
-							<span class="btn">View</span>
-						</div>
-					</a>				
-				</div>
-				<div class="portfolio-group">
-					<a class="portfolio-item" href="/images/5-large.jpg">
-						<img src="/images/5-small.jpg" alt="image 5">
-						<div class="detail">
-							<h3>Bustling City</h3>
-							<p>Duis ac laoreet mi. Maecenas non lorem sed elit molestie tincidunt. Vestibulum tincidunt libero urna, ut dignissim purus accumsan nec. Curabitur non est neque.</p>
-							<span class="btn">View</span>
-						</div>
-					</a>				
-				</div>
-				<div class="portfolio-group">
-					<a class="portfolio-item" href="/images/6-large.jpg">
-						<img src="/images/6-small.jpg" alt="image 22">
-						<div class="detail">
-							<h3>Retired Leaves</h3>
-							<p>Sed in molestie lectus. Curabitur non est neque. Maecenas id luctus ligula. Mauris dignissim ante eu arcu ultricies, at sodales orci aliquet.</p>
-							<span class="btn">View</span>
-						</div>
-					</a>				
-				</div>
-				<div class="portfolio-group">
-					<a class="portfolio-item" href="/images/8-large.jpg">
-						<img src="/images/8-small.jpg" alt="image 8">
-						<div class="detail">
-							<h3>Clean Design</h3>
-							<p>Vestibulum tincidunt libero urna, ut dignissim purus accumsan nec. Sed in molestie lectus. Curabitur non est neque. Maecenas id luctus ligula.</p>
-							<span class="btn">View</span>
-						</div>
-					</a>				
-				</div>
-				<div class="portfolio-group">
-					<a class="portfolio-item" href="/images/7-large.jpg">
-						<img src="/images/7-small.jpg" alt="image 7">
-						<div class="detail">
-							<h3>Rock Solid</h3>
-							<p>Duis ac laoreet mi. Maecenas non lorem sed elit molestie tincidunt. Maecenas id luctus ligula. Mauris dignissim ante eu arcu ultricies, at sodales orci aliquet.</p>
-							<span class="btn">View</span>
-						</div>
-					</a>				
-				</div>
-			</div> <!-- page 3 -->		
 			<div class="pagination">
 				<ul class="nav">
 					<li class="active">1</li>
-					<li>2</li>
-					<li>3</li>
 				</ul>
 			</div>
 		</div>
 	</div>	<!-- /.content-container -->	
     
 		<footer>
-			<p>Copyright &copy; 2084 Your Company Name Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a> - More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a></p>
-			<div class="social right">
-				<a href="#"><i class="fa fa-facebook"></i></a>
-				<a href="#"><i class="fa fa-twitter"></i></a>
-				<a href="#"><i class="fa fa-google-plus"></i></a>
-				<a href="#"><i class="fa fa-dribbble"></i></a>
-				<a href="#"><i class="fa fa-instagram"></i></a>
-				<a href="#"><i class="fa fa-linkedin"></i></a>
-			</div>
 		</footer>
 	</div>
 	<script type="text/javascript" src="/javascripts/jquery-1.11.1.min.js"></script>
@@ -315,6 +169,33 @@
 				}
 			});
 		});
+
+        function uploadByForm() {
+            //用form 表单直接 构造formData 对象; 就不需要下面的append 方法来为表单进行赋值了。
+            var formData = new FormData($("#myForm")[0]);
+            var url = "http://localhost:3000/photo/";
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: formData,
+                /**
+                 * 必须false才会避开jQuery对 formdata 的默认处理
+                 * XMLHttpRequest会对 formdata 进行正确的处理
+                 */
+                processData: false,
+                /**
+                 *必须false才会自动加上正确的Content-Type
+                 */
+                contentType: false,
+                success: function (responseStr) {
+//                alert(responseStr.newPath);
+                    location.href = "/photo";
+                },
+                error: function (responseStr) {
+                    alert("只能上传图片文件！");
+                }
+            });
+        }
 	</script>	
 </body>
 </html>
