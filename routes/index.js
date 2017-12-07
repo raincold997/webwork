@@ -13,7 +13,7 @@ router.get('/home', function(req, res, next) {
 
 
 /* GET register page. */
-router.route("/registe").get(function (req, res) {    // 到达此路径则渲染register文件，并传出title值供 register.html使用
+router.route("/registe").get(function (req, res) {
     res.render("registe", {title: 'User register'});
 }).post(function (req, res) {
     // req.session.error = 'success';
@@ -45,8 +45,6 @@ router.route("/login").get(function (req,res) {
     // res.send(200);
     var userName = req.body.uname;
     var password = req.body.upwd;
-    //console.log(userName,password);
-    // console.log("userName:"+userName);
     usersHandler.loginAUser([userName, password], function (error,loginStatus,user) {
         if (loginStatus === 1) {
             req.session.error = '登录成功！';
@@ -64,7 +62,7 @@ router.route("/login").get(function (req,res) {
     });
 });
 
-router.get("/logout", function (req, res) {    // 到达 /logout 路径则登出， session中user,error对象置空，并重定向到根路径
+router.get("/logout", function (req, res) {
     req.session.user = null;
     req.session.error = null;
     res.redirect("/login");

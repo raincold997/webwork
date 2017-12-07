@@ -77,10 +77,7 @@ exports.add = function (tableName, colNames, values, callback) {
             }
         });
 };
-/*
-run函数接受一个字符串参数，其中?表示占位符，占位符的值必须通过一个数组传递进来
-调用者提供了一个回调函数，然后通过这个回调函数来声明错误
- */
+
 // exports.delete = function (ts, callback) {
 //     db.run("DELETE FROM notes WHERE ts = ?;",
 //         [ts],

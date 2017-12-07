@@ -11,7 +11,7 @@ exports.addIntoAPhotoTable = function (userName, photoName, photoPath) {
                 util.log('ERROR ' + error);
                 throw error;
             }
-            async.series([  //async.series函数可以控制函数按顺序执行，从而保证最后的函数在所有其他函数完成之后执行
+            async.series([
                     function (cb) {
                         sqliteHelper.add(tableName, ["photoName", "photoPath"], [photoName, photoPath],
                             function (error) {
@@ -37,7 +37,7 @@ exports.getUserPhotoPaths = function (userName, callback) {
                 util.log('ERROR ' + error);
                 throw error;
             }
-            async.series([  //async.series函数可以控制函数按顺序执行，从而保证最后的函数在所有其他函数完成之后执行
+            async.series([
                     function (cb) {
                         sqliteHelper.forAll(userPhotoTableName, function (error, userPhoto) {
                             userPhotoPaths.push(userPhoto.photoPath);
@@ -60,17 +60,7 @@ exports.getUserPhotoPaths = function (userName, callback) {
             );
         });
 
-//     sqliteHelper.forAll(userPhotoTableName, function (error, userPhoto) {
-//         userPhotoPaths.push(userPhoto.photoPath);
-//     }, function (error) {
-//         if (error) {
-//             util.log('Fail on get photoPaths because of error:' + error);
-//             callback(error, null);
-//         }
-//         else {
-//             callback(null, userPhotoPaths);
-//         }
-//     });
+
  }
 
 

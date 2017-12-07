@@ -18,14 +18,10 @@
 			<div id="logo" class="left"><a href="#">Photo Wall</a></div>
 			<ul class="nav right center-text">
 				<li class="btn active">Home</li>
-				<!--<li class="btn"><a href="about.html">About</a></li>-->
-				<!--<li class="btn"><a href="awards.html">Awards</a></li>				-->
-				<!--<li class="btn"><a href="contact.html">Contact</a></li>-->
 				<li class="btn"><a rel="nofollow" href="/logout">logout</a></li>
 			</ul>
 
 		</nav>
-        <!--<div class="copyrights">Collect from <a href="http://www.cssmoban.com/"  title="网站模板">网站模板</a></div>-->
 		<div class="content-container">
 			<header>
 			<h1 class="center-text">Image Gallery</h1>
@@ -61,86 +57,6 @@
 					</a>
 				</div>
 				<% }) %>
-				<!--<div class="portfolio-group">-->
-					<!--<a class="portfolio-item" href="/images/1-large.jpg">-->
-						<!--<img src="/images/1-small.jpg" alt="image 1">-->
-						<!--<div class="detail">-->
-							<!--<h3>Wavy Road</h3>-->
-							<!--<span class="btn">View</span>-->
-							<!--<span class="btn">delete</span>-->
-						<!--</div>-->
-					<!--</a>				-->
-				<!--</div>-->
-				<!--<div class="portfolio-group">-->
-					<!--<a class="portfolio-item" href="/images/2-large.jpg">-->
-						<!--<img src="/images/2-small.jpg" alt="image 2">-->
-						<!--<div class="detail">-->
-							<!--<h3>Rocky Mountain</h3>-->
-							<!--<p>Sed in molestie lectus. Curabitur non est neque. Maecenas id luctus ligula. Duis ac laoreet mi. Maecenas non lorem sed elit molestie tincidunt.</p>-->
-							<!--<span class="btn">View</span>-->
-						<!--</div>-->
-					<!--</a>				-->
-				<!--</div>-->
-				<!--<div class="portfolio-group">-->
-					<!--<a class="portfolio-item" href="/images/3-large.jpg">-->
-						<!--<img src="/images/3-small.jpg" alt="image 3">-->
-						<!--<div class="detail">-->
-							<!--<h3>Clear River</h3>-->
-							<!--<p>Duis ac laoreet mi. Maecenas non lorem sed elit molestie tincidunt. Vestibulum tincidunt libero urna, ut dignissim purus accumsan nec.</p>-->
-							<!--<span class="btn">View</span>-->
-						<!--</div>-->
-					<!--</a>				-->
-				<!--</div>-->
-				<!--<div class="portfolio-group">-->
-					<!--<a class="portfolio-item" href="/images/4-large.jpg">-->
-						<!--<img src="/images/4-small.jpg" alt="image 4">-->
-						<!--<div class="detail">-->
-							<!--<h3>Rounded Flower</h3>-->
-							<!--<p>Sed in molestie lectus. Curabitur non est neque. Maecenas id luctus ligula. Mauris dignissim ante eu arcu ultricies, at sodales orci aliquet.</p>-->
-							<!--<span class="btn">View</span>-->
-						<!--</div>-->
-					<!--</a>				-->
-				<!--</div>-->
-				<!--<div class="portfolio-group">-->
-					<!--<a class="portfolio-item" href="/images/5-large.jpg">-->
-						<!--<img src="/images/5-small.jpg" alt="image 5">-->
-						<!--<div class="detail">-->
-							<!--<h3>Bustling City</h3>-->
-							<!--<p>Duis ac laoreet mi. Vestibulum tincidunt libero urna, ut dignissim purus accumsan nec. Sed in molestie lectus. Curabitur non est neque.</p>-->
-							<!--<span class="btn">View</span>-->
-						<!--</div>-->
-					<!--</a>				-->
-				<!--</div>-->
-				<!--<div class="portfolio-group">-->
-					<!--<a class="portfolio-item" href="/images/6-large.jpg">-->
-						<!--<img src="/images/6-small.jpg" alt="image 6">-->
-						<!--<div class="detail">-->
-							<!--<h3>Retired Leaves</h3>-->
-							<!--<p>Sed in molestie lectus. Curabitur non est neque. Maecenas id luctus ligula. Mauris dignissim ante eu arcu ultricies, at sodales orci aliquet.</p>-->
-							<!--<span class="btn">View</span>-->
-						<!--</div>-->
-					<!--</a>				-->
-				<!--</div>-->
-				<!--<div class="portfolio-group">-->
-					<!--<a class="portfolio-item" href="/images/7-large.jpg">-->
-						<!--<img src="/images/7-small.jpg" alt="image 7">-->
-						<!--<div class="detail">-->
-							<!--<h3>Clean Design</h3>-->
-							<!--<p>Vestibulum tincidunt libero urna, ut dignissim purus accumsan nec. Maecenas id luctus ligula. Mauris dignissim ante eu arcu ultricies, at sodales orci aliquet.</p>-->
-							<!--<span class="btn">View</span>-->
-						<!--</div>-->
-					<!--</a>				-->
-				<!--</div>-->
-				<!--<div class="portfolio-group">-->
-					<!--<a class="portfolio-item" href="/images/8-large.jpg">-->
-						<!--<img src="/images/8-small.jpg" alt="image 8">-->
-						<!--<div class="detail">-->
-							<!--<h3>Rock Solid</h3>-->
-							<!--<p>Duis ac laoreet mi. Maecenas non lorem sed elit molestie tincidunt. Mauris dignissim ante eu arcu ultricies, at sodales orci aliquet.</p>-->
-							<!--<span class="btn">View</span>-->
-						<!--</div>-->
-					<!--</a>				-->
-				<!--</div>-->
 			</div>
 			<div class="pagination">
 				<ul class="nav">
@@ -171,7 +87,6 @@
 		});
 
         function uploadByForm() {
-            //用form 表单直接 构造formData 对象; 就不需要下面的append 方法来为表单进行赋值了。
             var formData = new FormData($("#myForm")[0]);
             var url = "http://localhost:3000/photo/";
             $.ajax({
@@ -188,7 +103,6 @@
                  */
                 contentType: false,
                 success: function (responseStr) {
-//                alert(responseStr.newPath);
                     location.href = "/photo";
                 },
                 error: function (responseStr) {

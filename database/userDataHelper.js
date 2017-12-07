@@ -12,55 +12,19 @@ var keyName = "userName";
 exports.addAUser = function (values, callback) {
     let user = null;
 
-    // async.series({
-    //     findUser: function (done) {
-    //         sqlHelper.findNoteById(tableName,keyName,values[0],
-    //             function (err,userName) {
-    //                 if(err) throw err;
-    //                 user = userName;
-    //             },function (err) {
-    //                 if(err) throw done(err,null);
-    //                 done(null);
-    //             });
-    //     },
-    //     addUser: function (done) {
-    //         if(user === null) {
-    //            sqlHelper.add(tableName,colNames,values,
-    //                function (err) {
-    //                    if(err){
-    //                        console.log(values[0]+' add fail with '+err);
-    //                        callback(err,0);
-    //                    }
-    //                    else{
-    //                        callback(null,1);
-    //                    }
-    //                    done(err)
-    //                })
-    //         }else{
-    //             callback(null,2);
-    //             done()
-    //         }
-    //     }
-    // },function (err,result) {
-    //     if(err) throw err;
-    // })
     async.series([function (cb) {
         //顺序执行的代码一
         sqlHelper.findNoteById(tableName, keyName, values[0],
             function (error, result) {
                 if (error) throw error;
-                // console.log("users1:" + result.userName);
                 user = result;
-                // cb(null,result);
             },
             function (error) {
                 if (error) throw cb(error, null);
-                //回调函数中也要传入cb，否则如果cb放在回调函数之外则无法完成同步
                 cb(null);
             });
     }, function (cb) {
-        //顺序执行的代码二
-        //0代表error,1代表成功添加用户,2代表用户已存在无法添加
+        //0error,1成功添加,2已存在
         if (user === null) {
             sqlHelper.add("users", colNames, values,
                 function (error) {
@@ -70,9 +34,7 @@ exports.addAUser = function (values, callback) {
                     }
                     else {
                         callback(null, 1);
-                        // console.log("exist");
                     }
-                    //回调函数中也要传入cb，否则如果cb放在回调函数之外则无法完成同步
                     cb(error);
                 });
         }
@@ -82,7 +44,6 @@ exports.addAUser = function (values, callback) {
         }
 
     }], function (error, values) {
-        // console.log("zzz")
         if (error) throw error;
     });
 
@@ -92,15 +53,11 @@ exports.addAUser = function (values, callback) {
  */
 exports.loginAUser = function (values, callback) {
     let user = null;
-    // let userName = null;
-    // console.log("userName2:"+values[0]);
     async.series([function (cb) {
         sqlHelper.findNoteById(tableName, keyName, values[0],
             function (error, result) {
                 if (error) throw cb(error, null);
-                // console.log("users1:" + result.userName);
                 user = result;
-                // cb(null,result);
             },
             function (error) {
                 if (error) throw cb(error, null);
@@ -113,7 +70,6 @@ exports.loginAUser = function (values, callback) {
             cb();
         }
         else {
-            // console.log("user exist" + user.password + "values[1]" + values[1]);
             if (user.password === values[1]) {
                 callback(null, 1, user);
             }

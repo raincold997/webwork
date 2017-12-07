@@ -38,14 +38,14 @@ app.use(session({
 }));
 
 app.use(function(req,res,next){
-    res.locals.user = req.session.user;   // 从session 获取 user对象
-    var err = req.session.error;   //获取错误信息
+    res.locals.user = req.session.user;
+    var err = req.session.error;
     delete req.session.error;
-    res.locals.message = "";   // 展示的信息 message
+    res.locals.message = "";
     if(err){
         res.locals.message = '<div class="alert alert-danger" style="margin-bottom:20px;color:red;">'+err+'</div>';
     }
-    next();  //中间件传递
+    next();
 });
 
 // view engine setup
