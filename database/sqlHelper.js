@@ -78,18 +78,19 @@ exports.add = function (tableName, colNames, values, callback) {
         });
 };
 
-// exports.delete = function (ts, callback) {
-//     db.run("DELETE FROM notes WHERE ts = ?;",
-//         [ts],
-//         function (err) {
-//             if (err) {
-//                 util.log('FAIL to delete ' + err);
-//                 callback(err);
-//             } else {
-//                 callback(null);
-//             }
-//         });
-// }
+exports.delete = function (tableName,colName,values, callback) {
+    let command = "DELETE FROM " + tableName + " WHERE " + colName + " = ?;";
+    db.run(command,
+        [values],
+        function (err) {
+            if (err) {
+                util.log('FAIL to delete ' + err);
+                callback(err);
+            } else {
+                callback(null);
+            }
+        });
+}
 exports.edit = function (tableName, colNames, values, callback) {
     let command = "UPDATE " + tableName + " SET ";
     let valuesCommand = values.push(values[0]);

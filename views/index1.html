@@ -50,9 +50,9 @@
 					<a class="portfolio-item" href="<%= userPhotoPath %>">
 						<img src="<%= userPhotoPath%>" alt="<%= userPhotoPath%>">
 						<div class="detail">
-							<h3>hand</h3>
+							<h3>detail</h3>
 							<span class="btn">view</span>
-							<span class="btn">delete</span>
+							<span class="btn" onclick="deletePhoto('<%= userPhotoPath %>')">delete</span>
 						</div>
 					</a>
 				</div>
@@ -78,7 +78,7 @@
 	<script type="text/javascript">
 		$(function () {
 			$('.pagination li').click(changePage);
-			$('.portfolio-item').magnificPopup({ 
+			$('.portfolio-item').magnificPopup({
 				type: 'image',
 				gallery:{
 					enabled:true
@@ -109,6 +109,31 @@
                     alert("只能上传图片文件！");
                 }
             });
+
+
+        }
+
+        function deletePhoto(photopath) {
+//            alert(photopath);
+			var photoPath = photopath;
+			var data= {"photoPath":photoPath};
+			$.ajax({
+				url:'/photo/delete',
+				type:'post',
+				data: data,
+				success: function (data,status) {
+					if(status === 'success'){
+					    //alert("refresh the page");
+					    location.href = "/photo";
+					}
+                },
+				error:function (data,status) {
+					if(status === 'error'){
+//					    alert("delete error");
+						console.log("delete err");
+					}
+                }
+			})
         }
 	</script>	
 </body>

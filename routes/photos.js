@@ -109,14 +109,17 @@ router.route("/").get(function (req, res) {
 
 });
 
-// router.route("/delete").post(function (req, res) {
-//     let photoPath = req.body.photoPath;
-//     console.log("photoPath:" + photoPath);
-//     photosHandler.deleteUserPhoto(req.session.user.userName, photoPath, function (error) {
-//         if (error) {
-//             util.log('Fail on delete:' + error);
-//         }
-//     })
-// });
+router.route("/delete").post(function (req, res) {
+    let photoPath = req.body.photoPath;
+    // console.log("photoPath:" + photoPath);
+    photoHandler.deleteUserPhoto(req.session.user.userName, photoPath, function (error) {
+        if (error) {
+            res.send(500);
+            console.log('Fail on delete:' + error);
+        }else{
+            res.send(200);
+        }
+    })
+});
 
 module.exports = router;

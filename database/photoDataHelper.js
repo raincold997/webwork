@@ -2,6 +2,7 @@ var util = require('util');
 var sqliteHelper = require('./sqlHelper');
 var async = require('async');
 var keyName = "userName";
+var fs = require('fs');
 
 exports.addIntoAPhotoTable = function (userName, photoName, photoPath) {
     let tableName ="u"+userName + "_photos"
@@ -65,7 +66,7 @@ exports.getUserPhotoPaths = function (userName, callback) {
 
 
 exports.deleteUserPhoto = function (userName, photoPath, callback) {
-    let userPhotoTableName = userName + "_photos";
+    let userPhotoTableName = "u"+userName + "_photos";
     let colName = "photoPath";
     sqliteHelper.delete(userPhotoTableName, colName, photoPath, function (error) {
         if (error) {
@@ -73,6 +74,7 @@ exports.deleteUserPhoto = function (userName, photoPath, callback) {
             callback(error);
         }
         else {
+            // fs.unlinkSync(photoPath);
             callback(null);
         }
     })
